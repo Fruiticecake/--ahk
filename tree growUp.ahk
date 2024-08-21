@@ -103,7 +103,7 @@ autoClickEvent:
     {
         ;100 928 #211909  107 932
         WinGetPos, X, Y, Width, Height, ahk_id %hwnd%
-        ; 获取指定坐标的像素颜色
+        ; 获取指定坐标的像素颜色 128 943 #0e1b21
         CoordMode, Pixel, Screen
         PixelSearch, Px, Py, X + 100, Y + 928, X + 107, Y + 932, 0x211909, 3, Fast RGB
         if !ErrorLevel
@@ -116,7 +116,13 @@ autoClickEvent:
             Sleep, 3000 
             ControlClick, x345 y900, ahk_id %hwnd% NA
         }    
-
+        PixelSearch, Px, Py, X + 120, Y + 920, X + 130, Y + 935, 0x0e1b21, 6, Fast RGB
+        if !ErrorLevel
+        {
+            SetControlDelay -1
+            ControlClick, x345 y900, ahk_id %hwnd% NA
+            Sleep, 500
+        }
     }
 
 Return
@@ -142,13 +148,13 @@ treeEvent:
         ; 获取指定坐标的像素颜色
         CoordMode, Pixel, Screen
         ;PixelGetColor, color, absX, absY, RGB
-        PixelSearch, Px, Py, AbsX1, AbsY1, AbsX2, AbsY2, 0xDE443B, 3, Fast RGB
+        PixelSearch, Px, Py, AbsX1, AbsY1, AbsX2, AbsY2, 0xDE443B, 6, Fast RGB
         if !ErrorLevel
         {
             SetControlDelay -1
             ControlClick, x446 y901, ahk_id %hwnd% NA
             Sleep, 500 
-            PixelSearch, Px, Py, X + 163, Y + 826, AbsX2 + 177, AbsY2 + 835, 0xE1684D, 3, Fast RGB
+            PixelSearch, Px, Py, X + 163, Y + 826, AbsX2 + 177, AbsY2 + 835, 0xE1684D, 6, Fast RGB
             
             if !ErrorLevel
             {
